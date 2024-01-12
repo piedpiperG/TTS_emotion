@@ -149,4 +149,5 @@ def step2():
 if __name__ == "__main__":
     # 对文本和音频进行预处理
     step1()
-    # step2()
+    # 转换为音素
+    step2()
