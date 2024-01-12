@@ -5,21 +5,26 @@ import librosa
 import jsonlines
 from tqdm import tqdm
 import re
+import os
+
+from fron.frontend_cn import split_py, tn_chinese
+from fron.frontend_en import read_lexicon, G2p
+from step2_utils import onetime, onetime2
 
 
 # 从原始数据中提取和处理文本和音频信息，并将这些信息以一种格式化的方式保存，便于后续的数据处理和机器学习任务
 def step1():
     # 直接指定数据目录的路径
     ROOT_DIR = os.path.abspath(".")  # 替换为你的数据目录路径
-    RAW_DIR = f"{ROOT_DIR}/raw"
-    WAV_DIR = f"{ROOT_DIR}/wavs"
-    TEXT_DIR = f"{ROOT_DIR}/text"
+    RAW_DIR = os.path.join(ROOT_DIR, "raw")
+    WAV_DIR = os.path.join(ROOT_DIR, "wavs")
+    TEXT_DIR = os.path.join(ROOT_DIR, "text")
 
     os.makedirs(WAV_DIR, exist_ok=True)
     os.makedirs(TEXT_DIR, exist_ok=True)
 
-    with open(f"{RAW_DIR}/BZNSYP/ProsodyLabeling/000001-010000.txt", encoding="utf-8") as f, \
-            jsonlines.open(f"{TEXT_DIR}/data.jsonl", "w") as fout1:
+    with open(os.path.join(RAW_DIR, "BZNSYP", "ProsodyLabeling", "000001-010000.txt"), encoding="utf-8") as f, \
+            jsonlines.open(os.path.join(TEXT_DIR, "data.jsonl"), "w") as fout1:
 
         lines = f.readlines()
         # 每两行作为一个处理单元，第一行包含文本，第二行包含音节信息。
@@ -144,3 +149,4 @@ def step2():
 if __name__ == "__main__":
     # 对文本和音频进行预处理
     step1()
+    # step2()

@@ -13,8 +13,8 @@
 # limitations under the License.
 
 import re
-from frontend_cn import g2p_cn, re_digits, tn_chinese
-from frontend_en import ROOT_DIR, read_lexicon, G2p, get_eng_phoneme
+from fron.frontend_cn import g2p_cn, re_digits, tn_chinese
+from fron.frontend_en import ROOT_DIR, read_lexicon, G2p, get_eng_phoneme
 
 # Thanks to GuGCoCo and PatroxGaurab for identifying the issue:
 # the results differ between frontend.py and frontend_en.py. Here's a quick fix.
