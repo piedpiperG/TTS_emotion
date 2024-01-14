@@ -1,5 +1,4 @@
 import argparse
-import os
 import soundfile as sf
 import librosa
 import jsonlines
